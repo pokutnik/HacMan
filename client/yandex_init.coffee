@@ -16,6 +16,11 @@ Meteor.startup ->
       console.log(shape, options)
       s = world.addShape(options)
 
-    myMap.events.add('click', ->
-        console.log(e)
+    myMap.events.add('click', (e) ->
+      coords = e.get('coordPosition')
+      y = coords[0].toPrecision(6)
+      x = coords[1].toPrecision(6)
+      _.each(shapes, (shape) ->
+        shape.move({to_lat: y, to_lng: x})
+      )
     )

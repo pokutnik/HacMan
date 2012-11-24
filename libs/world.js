@@ -25,6 +25,7 @@ function World(mapobj) {
 	
 	this.fit_map_to_shapes = function() {
 		var shape_coords = [];
+		if(!_.any(shapes)) return;
 		_.each(shapes, function(id, shape) {
 			var coords = shape.get_coordinates();
 			if(typeof coords[0] != 'undefined') {
