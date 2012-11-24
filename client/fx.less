@@ -1,0 +1,20 @@
+.flying {
+    z-index: 3;
+    font: 48px Tahoma, Helvetica, Arial, sans-serif;
+    position: absolute;
+    text-align: center;
+    opacity: 1;
+    width: 400px;
+    text-align: center;
+    margin-left: -200px;
+    -webkit-transform: scale(0.3);
+    &.after {
+        opacity: 0.1;
+        -webkit-transform: scale(1);
+        -webkit-transition: all 1s ease-out;
+    }
+}
+.flying_death {
+    .flying;
+    color: red;
+}
