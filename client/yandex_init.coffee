@@ -15,3 +15,7 @@ Meteor.startup ->
       options = _.extend({type: 'pacman', map_ref: myMap}, shape)
       console.log(shape, options)
       s = world.addShape(options)
+
+		myMap.events.add('click', function (e) {
+			console.log(e)
+		})
