@@ -23,31 +23,6 @@
 
     <!--script src="./js/jquery-1.8.2.min.js" type="text/javascript"></script-->
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
-		<script src="lib/shape.js" type="text/javascript"></script>
-		<script src="lib/world.js" type="text/javascript"></script>
-    <script type="text/javascript">
-          ymaps.ready(function () {
-            var myMap = new ymaps.Map('myMap', {
-              center: [50.442638,30.543365],
-              zoom: 15,
-              behaviors: ['drag', 'scrollZoom']
-            });
-
-            myMap.controls.add(
-              new ymaps.control.ZoomControl()
-            );
-
-						var world = new World(myMap);
-						
-						world.addShape({type: 'pacman', map_ref: myMap});
-						
-						MAX_GHOSTS = 2;
-						
-						for(var i = 0; i < MAX_GHOSTS; i++) {
-						  world.addShape({type: 'ghost', map_ref: myMap});
-					  }
-          });
-    </script>
   </head>
 
   <body>
