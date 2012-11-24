@@ -1,5 +1,5 @@
 function World(mapobj) {
-	var map_ref = mapobj, shapes_length	= 0, shapes = {};
+	var map_ref = mapobj, shapes = {};
 	MAP_HEIGHT = 600;
 	MAP_WIDTH = 1100;
 	
@@ -12,7 +12,6 @@ function World(mapobj) {
 		options['world_ref'] = this;
 		var shape = new Shape(options);
 		shapes[options['id']] = shape;
-		shape_length += 1;
     return shape;
 	}
 
