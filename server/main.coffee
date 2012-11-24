@@ -3,7 +3,7 @@ Accounts.onCreateUser (options, user)->
   Circle.insert({
     userId: user._id,
     username: user.username,
-    x: 222,
-    y: 100,
+    x: 50.442638,
+    y: 30.543365,
   })
 
