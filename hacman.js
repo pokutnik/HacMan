@@ -4,6 +4,8 @@ if (Meteor.isClient) {
          'page': 'main'},
         {'title': 'Rating',
          'page': 'rating'},
+        {'title': 'Profile',
+         'page': 'profile'},
         ];
     if(Session.get('page') == null) {
         Session.set('page', 'main');
