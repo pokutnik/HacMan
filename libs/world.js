@@ -1,13 +1,18 @@
 function World(mapobj) {
-	var map_ref = mapobj, shapes = [];
+	var map_ref = mapobj, shapes_length	= 0, shapes = {};
 	MAP_HEIGHT = 600;
 	MAP_WIDTH = 1100;
+	
+	this.findShape = function(id) {
+		return shapes[id];
+	}
 	
 	this.addShape = function(options) {
 		options['after_create_callback'] = this.fit_map_to_shapes;
 		options['world_ref'] = this;
 		var shape = new Shape(options);
-		shapes.push(shape);
+		shapes[options['id']] = shape;
+		shape_length += 1;
     return shape;
 	}
 
@@ -19,20 +24,15 @@ function World(mapobj) {
     shape.type
   }
 	
-	this.draw = function() {
-		for (var i = 0; i < shapes.length; i++) {
-		  shapes[i].draw();
-		}
-	}
-	
 	this.fit_map_to_shapes = function() {
 		var shape_coords = [];
-		for(var i = 0; i < shapes.length; i++) {
-			var coords = shapes[i].get_coordinates();
+		_.each(shapes, function(id, shape) {
+			var coords = shape.get_coordinates();
 			if(typeof coords[0] != 'undefined') {
 			  shape_coords.push(coords);
 			}
-	  }
+	  });
+	
 		if(shape_coords.length < 2) return;
 		
 		var max_y = shape_coords[0][0], 
