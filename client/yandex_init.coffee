@@ -16,6 +16,6 @@ Meteor.startup ->
       console.log(shape, options)
       s = world.addShape(options)
 
-		myMap.events.add('click', function (e) {
-			console.log(e)
-		})
+    myMap.events.add('click', ->
+        console.log(e)
+    )
