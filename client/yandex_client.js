@@ -10,14 +10,21 @@ Meteor.startup(function(){
       new ymaps.control.ZoomControl()
     );
 
-    var world = new World(myMap);
+    var world = new World(myMap), s;
     
-    world.addShape({type: 'pacman', map_ref: myMap});
-    
-    MAX_GHOSTS = 3;
-    
-    for(var i = 0; i < MAX_GHOSTS; i++) {
-      world.addShape({type: 'ghost', map_ref: myMap});
+    shapes = Circle.find({}, {reactive:false}).fetch()
+    for(var i = 0; i < shapes.length; i++) {
+      s = world.addShape({type: 'pacman', map_ref: myMap});
+      shape = shape[i]
+      s.init(shape.id, shape.x, shape.y)
     }
+    
+    //world.addShape({type: 'pacman', map_ref: myMap});
+    
+    //MAX_GHOSTS = 3;
+    
+    //for(var i = 0; i < MAX_GHOSTS; i++) {
+      //world.addShape({type: 'ghost', map_ref: myMap});
+    //}
   });
 });
