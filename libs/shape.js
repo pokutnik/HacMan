@@ -40,7 +40,7 @@ function Shape(options) {
 	}
 
   this.get_coordinates = function() {
-	  return [y, x];
+	  return [x, y];
   }
 
 	this.get_random_street = function() {

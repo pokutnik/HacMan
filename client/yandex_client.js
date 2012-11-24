@@ -14,7 +14,7 @@ Meteor.startup(function(){
     
     world.addShape({type: 'pacman', map_ref: myMap});
     
-    MAX_GHOSTS = 2;
+    MAX_GHOSTS = 3;
     
     for(var i = 0; i < MAX_GHOSTS; i++) {
       world.addShape({type: 'ghost', map_ref: myMap});
