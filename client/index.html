@@ -42,6 +42,7 @@
 						world.addShape({type: 'pacman', map_ref: myMap});
 						
 						MAX_GHOSTS = 2;
+						
 						for(var i = 0; i < MAX_GHOSTS; i++) {
 						  world.addShape({type: 'ghost', map_ref: myMap});
 					  }
@@ -55,16 +56,27 @@
   </head>
 
   <body>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="#">hacman</a>
-        <ul class="nav">
-          <li class="active"><a href="/">Game</a></li>
-          <li><a id="rating" href="#">Rating</a></li>
-        </ul>
-      </div>
-    </div>
+    {{> navbar }}
+    {{> main }}
+  </body>
+
+<template name="navbar">
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">hacman</a>
+    <ul class="nav">
+        {{#each menu }}
+          <li {{#if isPage page }}class="active"{{/if}}>
+            <a class="pagechange" id="{{ page }}" href="#{{ page }}">{{ title }}</a></li>
+        {{/each}}
+    </ul>
+      {{loginButtons align='right'}}
+  </div>
+</div>
+</template>
+<template name="main">
     <div class="container">
+        {{#if isPage "main" }}
       <div>
         <h1 style="text-align:center">PackMan</h1>
         <div id="myMap" style="width: 1100px; height: 800px"></div>
@@ -73,5 +85,9 @@
       <div class="footer">
         <p style="text-align:center">&copy; Kiev Hackaton 2012</p>
       </div>
+        {{/if}}
+        {{#if isPage "rating" }}
+        rating
+        {{/if}}
     </div> <!-- /container -->
-  </body>
+</template>
