@@ -32,17 +32,20 @@
               zoom: 15,
               behaviors: ['drag', 'scrollZoom']
             });
+
             myMap.controls.add(
               new ymaps.control.ZoomControl()
             );
 
 						var world = new World(myMap);
-
-						world.addShape(new Shape({x: 50.442638, y: 30.543365, type: 'pacman', map_ref: myMap}));
-
-						world.addShape(new Shape({x: 50.43638, y: 30.543365, type: 'ghost', map_ref: myMap}));
-						world.addShape(new Shape({x: 50.442638, y: 30.543365, type: 'ghost', map_ref: myMap}));
-						world.addShape(new Shape({x: 50.452638, y: 30.549365, type: 'ghost', map_ref: myMap}));
+						var random_street = world.get_random_street();
+						world.addShape(new Shape({x: random_street['x'], y: random_street['y'], type: 'pacman', map_ref: myMap}));
+						
+						MAX_GHOSTS = 10;
+						for(var i = 0; i < MAX_GHOSTS; i++) {
+							var random_street = world.get_random_street();
+						  world.addShape(new Shape({x: random_street['x'], y: random_street['y'], type: 'ghost', map_ref: myMap}));
+					  }
 						world.draw();
           });
     </script>
