@@ -15,12 +15,9 @@ function World(mapobj) {
     return shape;
 	}
 
-  // TODO: implement move from server info
-  this.updateShape = function(shape){
-    shape._id // 
-    shape.x // lat
-    shape.y // lan
-    shape.type
+  this.update_shape = function(options){
+    var shape = this.findShape(options._id);
+    shape.move(options)
   }
 	
 	this.fit_map_to_shapes = function() {

@@ -9,6 +9,7 @@ Meteor.startup ->
     myMap.controls.add(new ymaps.control.ZoomControl())
 
     world = new World(myMap)
+    window.world = world
 
     shapes = Player.find({}, {reactive:false}).fetch()
     for shape in shapes
