@@ -28,6 +28,7 @@
   <body>
     {{> navbar }}
     {{> main }}
+    {{> positions}}
   </body>
 
 <template name="navbar">
@@ -60,4 +61,11 @@
         rating
         {{/if}}
     </div> <!-- /container -->
+</template>
+<template name="positions">
+  <ul class='pos'>
+  {{# each circles}}
+  <li>{{this.x}}, {{this.y}} | {{this._id}}</li>
+  {{/each}}
+</ul>
 </template>
