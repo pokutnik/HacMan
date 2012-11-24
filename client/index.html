@@ -5,10 +5,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,19 +12,13 @@
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 
-    <!--script src="./js/jquery-1.8.2.min.js" type="text/javascript"></script-->
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
   </head>
 
   <body>
     {{> navbar }}
     {{> main }}
-    {{> positions}}
   </body>
 
 <template name="navbar">
@@ -53,6 +43,9 @@
         {{#if isPage "rating" }}
             {{> rating }}
         {{/if}}
+        {{#if isPage "profile" }}
+            {{> profile }}
+        {{/if}}
       <div class="footer">
         <p style="text-align:center">&copy; Kiev Hackaton 2012</p>
       </div>
@@ -68,9 +61,11 @@
 </template>
 
 <template name="game">
-  <div>
-    <h1 style="text-align:center">PackMan</h1>
-    <div id="myMap" style="width: 1100px; height: 800px"></div>
+  <div class='row game'>
+    <h1 style="text-align:center">HackMan  PackMan</h1>
+    <div id="myMap" class='span9' style="height: 800px"></div>
+    <div class='span3'>
+    {{> positions}}
   </div>
 </template>
 

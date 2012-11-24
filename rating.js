@@ -8,11 +8,11 @@ Meteor.methods({
 if(Meteor.isServer) {
 
     Meteor.publish("userData", function () {
-      return Meteor.users.find({}, {fields: {'score': 1}});
+      return Meteor.users.find({}, {fields: {'score': 1, 'profile': 1}});
     });
 
     Meteor.publish("allUserData", function () {
-      return Meteor.users.find({}, {fields: {'score': 1}});
+      return Meteor.users.find({}, {fields: {'score': 1, 'profile': 1}});
     });
 
 }

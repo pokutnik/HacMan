@@ -10,6 +10,14 @@ function World(mapobj) {
 		shapes.push(shape);
     return shape;
 	}
+
+  // TODO: implement move from server info
+  this.updateShape = function(shape){
+    shape._id // 
+    shape.x // lat
+    shape.y // lan
+    shape.type
+  }
 	
 	this.draw = function() {
 		for (var i = 0; i < shapes.length; i++) {
