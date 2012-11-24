@@ -10,4 +10,13 @@
 <template name="hello">
   {{greeting}}
   {{loginButtons align='right'}}
+  {{> t_circles}}
+</template>
+
+<template name="t_circles">
+  {{#each circles}}
+    <div class='circle' style='left: {{this.x}}px; top: {{this.y}}px'>
+      I'm circle
+    </div>
+  {{/each}}
 </template>
