@@ -5,7 +5,9 @@ if (Meteor.isClient) {
         {'title': 'Rating',
          'page': 'rating'},
         ];
-    Session.set('page', 'main');
+    if(Session.get('page') == null) {
+        Session.set('page', 'main');
+    }
     Template.navbar.events({
         'click a.pagechange': function() {
             Session.set('page', this.page);
