@@ -12,11 +12,12 @@ Meteor.startup(function(){
 
     var world = new World(myMap), s;
     
-    shapes = Circle.find({}, {reactive:false}).fetch()
+    shapes = Player.find({}, {reactive:false}).fetch()
     for(var i = 0; i < shapes.length; i++) {
-      s = world.addShape({type: 'pacman', map_ref: myMap});
-      shape = shape[i]
-      s.init(shape.id, shape.x, shape.y)
+      shape = shapes[i]
+      options = _.extend({type: 'players', map_ref: myMap}, shape)
+      console.log(shape, options);
+      s = world.addShape(options);
     }
     
     //world.addShape({type: 'pacman', map_ref: myMap});

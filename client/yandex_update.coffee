@@ -1,9 +1,9 @@
-Template.positions.circles = ->
-  Circle.find({})
+Template.positions.players = ->
+  Player.find({})
 
 Meteor.startup ->
   ymaps.ready ->
     Meteor.autorun ->
-      c = Circle.find({})
-      console.log(c)
+      p = Player.find({})
+      console.log(p)
 

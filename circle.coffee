@@ -1,9 +1,9 @@
-Circle = new Meteor.Collection('circle')
+Player = new Meteor.Collection('player')
 
 Meteor.methods {
   move_circle: (x,y) ->
     user = Meteor.user()
-    o = Circle.update(user.c_id, {$set: {
+    o = Player.update(user.c_id, {$set: {
         x: x,
         y: y,
       }

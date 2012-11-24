@@ -1,6 +1,5 @@
-
 Accounts.onCreateUser (options, user)->
-  c = Circle.insert({
+  c = Player.insert({
     x: 50.442638,
     y: 30.543365,
   })
@@ -11,8 +10,5 @@ NewCollection = new Meteor.Collection('new_collection')
 
 Meteor.startup ->
   unless NewCollection.findOne()
+    # code for initial database population
     NewCollection.insert({version: 1})
-    c = Circle.insert({
-      x: 50.402638,
-      y: 30.503365,
-    })
