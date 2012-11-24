@@ -4,6 +4,7 @@ function World(mapobj) {
 	this.addShape = function(options) {
 		var shape = new Shape(options);
 		shapes.push(shape);
+    return shape;
 	}
 	
 	this.fit_map_to_shapes = function() {
