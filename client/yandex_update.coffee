@@ -4,7 +4,7 @@ Template.positions.players = ->
 Meteor.startup ->
   ymaps.ready ->
     Meteor.autorun ->
-      p = Player.find().fetch()
-      console.log(p)
-      world.update_shape(p)
+      for p in Player.find().fetch()
+        console.log(p)
+        world.update_shape(p)
 
