@@ -12,7 +12,7 @@ function Shape(options) {
 	this.move = function(options) {
 		var x = options['x'],
 		    y = options['y'];
-		if(this.can_move(options)) {
+		if(placemark && this.can_move(options)) {
 		  placemark.geometry.setCoordinates([x, y]); // move
 		}
 	}
