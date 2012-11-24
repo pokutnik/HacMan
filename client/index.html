@@ -39,15 +39,17 @@
 
 						var world = new World(myMap);
 						
-						var random_street = world.get_random_street();
-						world.addShape(new Shape({x: random_street['x'], y: random_street['y'], type: 'pacman', map_ref: myMap}));
+						world.addShape({type: 'pacman', map_ref: myMap});
 						
-						MAX_GHOSTS = 10;
+						MAX_GHOSTS = 2;
 						for(var i = 0; i < MAX_GHOSTS; i++) {
-							var random_street = world.get_random_street();
-						  world.addShape(new Shape({x: random_street['x'], y: random_street['y'], type: 'ghost', map_ref: myMap}));
+						  world.addShape({type: 'ghost', map_ref: myMap});
 					  }
-						world.draw();
+						var bounds = [];
+						for(var i = 0; i < world.shapes.length; i++) {
+						  bounds.push(world.shapes[i].get_coordinates);
+					  }
+						myMap.setBounds(bounds);
           });
     </script>
   </head>
