@@ -4,6 +4,7 @@ function Shape(options) {
 	
 	var x, // // instead of latitude and longitude
 			y,
+			world_ref = options['world_ref'],
 			map_ref = options['map_ref'],
 			type = options['type'],
 			placemark;
@@ -39,7 +40,7 @@ function Shape(options) {
 	}
 
   this.get_coordinates = function() {
-	  return [y, x];
+	  return [x, y];
   }
 
 	this.get_random_street = function() {
@@ -56,9 +57,10 @@ function Shape(options) {
 				shape.get_random_street();
 			}
 			shape.draw();
+			world_ref.fit_map_to_shapes();
 			return;
 		});
 	}
-			
+	
 	this.get_random_street();
 }

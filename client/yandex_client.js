@@ -19,10 +19,5 @@ Meteor.startup(function(){
     for(var i = 0; i < MAX_GHOSTS; i++) {
       world.addShape({type: 'ghost', map_ref: myMap});
     }
-    var bounds = [];
-    for(var i = 0; i < world.shapes.length; i++) {
-      bounds.push(world.shapes[i].get_coordinates);
-    }
-    myMap.setBounds(bounds);
   });
 });
