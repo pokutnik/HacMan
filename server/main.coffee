@@ -1,10 +1,8 @@
 
 Accounts.onCreateUser (options, user)->
-  console.log(options,user)
-  Circle.insert({
-    userId: user._id,
-    username: user.username,
+  c = Circle.insert({
     x: 50.442638,
     y: 30.543365,
   })
-
+  user.c_id = c
+  return user
