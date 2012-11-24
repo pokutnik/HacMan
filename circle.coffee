@@ -1,13 +1,12 @@
 Circle = new Meteor.Collection('circle')
 
-Meteor.methods -> {
+Meteor.methods {
   move_circle: (x,y) ->
-    console.log(x,y,this)
-    Circle.update({
-      owner: this.userId,
-    },{
-      owner: this.userId,
-      x: x,
-      y: y,
+    user = Meteor.user()
+
+    o = Circle.update({userId:user._id}, {$set: {
+        x: x,
+        y: y,
+      }
     })
-}
+  }
