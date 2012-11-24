@@ -10,17 +10,18 @@ function Shape(options) {
 			placemark;
 			
 	this.move = function(options) {
-				var move_to_x = options['to_lat'],
-				    move_to_y = options['to_lng'];
-				if(can_move(options)) {
-					// move
-				}
+		var x = options['to_lat'],
+		    y = options['to_lng'];
+		if(this.can_move(options)) {
+		  placemark.geometry.setCoordinates([x, y]); // move
+		}
 	}
 
 	this.can_move = function(options) {
-				var move_to_x = options['to_lat'],
-				    move_to_y = options['to_lng'];
+		var move_to_x = options['to_lat'],
+		    move_to_y = options['to_lng'];
 				// maps.api
+		return true;
 	}
 
 	this.draw = function() {
@@ -30,7 +31,8 @@ function Shape(options) {
 			  balloonContent: type
 			}, {
 			  iconImageHref: (type == 'pacman' ? 'pacman.png' : 'ghost.gif'), // картинка иконки
-			  iconImageSize: [25, 25]
+			  iconImageSize: [25, 25],
+			  draggable: true
 			});
 		  map_ref.geoObjects.add(placemark);
 		}
