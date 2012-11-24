@@ -14,7 +14,7 @@ Meteor.startup(function(){
     
     shapes = Player.find({}, {reactive:false}).fetch()
     for(var i = 0; i < shapes.length; i++) {
-      shape = shapes[i]
+      shape = shapes[i];
       options = _.extend({type: 'players', map_ref: myMap}, shape)
       console.log(shape, options);
       s = world.addShape(options);
