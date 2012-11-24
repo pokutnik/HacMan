@@ -11,7 +11,7 @@ function World(mapobj) {
 		options['after_create_callback'] = this.fit_map_to_shapes;
 		options['world_ref'] = this;
 		var shape = new Shape(options);
-		shapes[options['id']] = shape;
+		shapes[options['_id']] = shape;
     return shape;
 	}
 
@@ -26,7 +26,8 @@ function World(mapobj) {
 	this.fit_map_to_shapes = function() {
 		var shape_coords = [];
 		if(!_.any(shapes)) return;
-		_.each(shapes, function(id, shape) {
+
+		_.each(shapes, function(shape, id) {
 			var coords = shape.get_coordinates();
 			if(typeof coords[0] != 'undefined') {
 			  shape_coords.push(coords);

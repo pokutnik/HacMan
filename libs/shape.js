@@ -12,6 +12,8 @@ function Shape(options) {
 	this.move = function(options) {
 		var x = options['to_lat'],
 		    y = options['to_lng'];
+		console.log(x);
+		console.log(y);
 		if(this.can_move(options)) {
 		  placemark.geometry.setCoordinates([x, y]); // move
 		}

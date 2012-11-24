@@ -21,6 +21,7 @@ Meteor.startup ->
       y = coords[0].toPrecision(6)
       x = coords[1].toPrecision(6)
       _.each(shapes, (shape) ->
+        console.log(shape)
         shape.move({to_lat: y, to_lng: x})
       )
     )
