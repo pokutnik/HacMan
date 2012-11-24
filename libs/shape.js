@@ -24,11 +24,14 @@ function Shape(options) {
 	}
 
 	this.draw = function() {
-		console.log('draw');
-		console.log(placemark);
 		if(typeof placemark == "undefined") {
 			console.log('adding placemark');
-		  placemark = new ymaps.Placemark([x, y]);
+		  placemark = new ymaps.Placemark([x, y], {
+			  balloonContent: type
+			}, {
+			  iconImageHref: (type == 'pacman' ? 'pacman.png' : 'ghost.gif'), // картинка иконки
+			  iconImageSize: [25, 25]
+			});
 		  map_ref.geoObjects.add(placemark);
 		}
 	}

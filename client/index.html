@@ -48,24 +48,47 @@
 <template name="main">
     <div class="container">
         {{#if isPage "main" }}
-      <div>
-        <h1 style="text-align:center">PackMan</h1>
-        <div id="myMap" style="width: 1100px; height: 600px"></div>
-      </div>
-
+            {{>game}}
+        {{/if}}
+        {{#if isPage "rating" }}
+            {{> rating }}
+        {{/if}}
       <div class="footer">
         <p style="text-align:center">&copy; Kiev Hackaton 2012</p>
       </div>
-        {{/if}}
-        {{#if isPage "rating" }}
-        rating
-        {{/if}}
     </div> <!-- /container -->
 </template>
+
 <template name="positions">
   <ul class='pos'>
   {{# each players}}
   <li>{{this.x}}, {{this.y}} | {{this._id}}</li>
   {{/each}}
 </ul>
+</template>
+
+<template name="game">
+  <div>
+    <h1 style="text-align:center">PackMan</h1>
+    <div id="myMap" style="width: 1100px; height: 800px"></div>
+  </div>
+</template>
+
+<template name="rating">
+    <table class="table">
+        <thead>
+            <tr>
+                <td class="span2">User</td>
+                <td class="span1">Score</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user_ratings }}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ score }}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </template>

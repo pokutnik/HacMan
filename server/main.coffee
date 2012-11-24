@@ -4,6 +4,7 @@ Accounts.onCreateUser (options, user)->
     y: 30.543365,
   })
   user.c_id = c
+  user.score = 0
   return user
 
 NewCollection = new Meteor.Collection('new_collection')
