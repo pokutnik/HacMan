@@ -1,1 +1,7 @@
-/* CSS declarations go here */
+.circle {
+    position: relative;
+    border-radius: 40px;
+    hight: 40px;
+    width: 40px;
+    background-color: yellow;
+}

@@ -8,6 +8,7 @@ function World(mapobj) {
 		options['world_ref'] = this;
 		var shape = new Shape(options);
 		shapes.push(shape);
+    return shape;
 	}
 	
 	this.draw = function() {
