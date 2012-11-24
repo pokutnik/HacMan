@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>HackMan</title>
@@ -37,11 +35,11 @@
             myMap.controls.add(
               new ymaps.control.ZoomControl()
             );
-            
+
 						var world = new World(myMap);
-						
+
 						world.addShape(new Shape({x: 50.442638, y: 30.543365, type: 'pacman', map_ref: myMap}));
-						
+
 						world.addShape(new Shape({x: 50.43638, y: 30.543365, type: 'ghost', map_ref: myMap}));
 						world.addShape(new Shape({x: 50.442638, y: 30.543365, type: 'ghost', map_ref: myMap}));
 						world.addShape(new Shape({x: 50.452638, y: 30.549365, type: 'ghost', map_ref: myMap}));
@@ -50,8 +48,16 @@
     </script>
   </head>
 
-  <body style="background-color:snowwhite;">
-
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">hacman</a>
+        <ul class="nav">
+          <li class="active"><a href="/">Game</a></li>
+          <li><a id="rating" href="#">Rating</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="container">
       <div>
         <h1 style="text-align:center">PackMan</h1>
@@ -63,4 +69,3 @@
       </div>
     </div> <!-- /container -->
   </body>
-</html>
