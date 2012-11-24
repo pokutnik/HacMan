@@ -38,6 +38,7 @@
             );
 
 						var world = new World(myMap);
+						
 						var random_street = world.get_random_street();
 						world.addShape(new Shape({x: random_street['x'], y: random_street['y'], type: 'pacman', map_ref: myMap}));
 						
