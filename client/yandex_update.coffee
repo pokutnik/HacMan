@@ -1,9 +1,9 @@
 Template.positions.players = ->
-  Player.find({})
+  Player.find()
 
 Meteor.startup ->
   ymaps.ready ->
     Meteor.autorun ->
-      p = Player.find({})
+      p = Player.find()
       console.log(p)
 
