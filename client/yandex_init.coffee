@@ -7,7 +7,7 @@ Meteor.startup ->
     })
 
     myMap.controls.add(new ymaps.control.ZoomControl())
-
+    
     world = new World(myMap)
     window.world = world
 
@@ -22,18 +22,13 @@ Meteor.startup ->
       coords = e.get('coordPosition')
       y = coords[0].toPrecision(6)
       x = coords[1].toPrecision(6)
-      
-      ymaps.route([[shapes[0][0], shapes[0][1]], [x, y]], {
-        mapStateAutoApply: true
-      }).then((route) ->
-        route.getPaths().options.set({
-          strokeColor: '0000ffff',
-          opacity: 0.9
-        })
+      ymaps.route([[shapes[0]['x'], shapes[0]['y']],[y, x]]).then( (route) ->
+        console.log(route)
         myMap.geoObjects.add(route)
         _.each(shapes, (shape) ->
           console.log(shape)
           shape.move({x: x, y: x})
         )
       )
+
     )

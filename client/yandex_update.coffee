@@ -5,6 +5,5 @@ Meteor.startup ->
   ymaps.ready ->
     Meteor.autorun ->
       for p in Player.find().fetch()
-        console.log(p)
         world.update_shape(p)
 
