@@ -4,6 +4,6 @@ Template.positions.circles = ->
 Meteor.startup ->
   ymaps.ready ->
     Meteor.autorun ->
-      c = Circles.find({})
+      c = Circle.find({})
       console.log(c)
 
