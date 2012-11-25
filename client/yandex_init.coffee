@@ -38,6 +38,8 @@ Meteor.startup ->
         x = coords[1].toPrecision(6)
         ymaps.route([[shapes[0]['x'], shapes[0]['y']],[y, x]]).then( (route) ->
           points = route.getWayPoints()
+          route_pairs_list = []  ## list of route points
+          Meteor.call('set_route', route_pairs_list)
           points.each((p) ->
             _.each(shapes, (shape) ->
               p_coords = p.geometry.getCoordinates()
