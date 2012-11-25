@@ -17,9 +17,10 @@ function World(mapobj) {
 
   this.update_shape = function(options){
     var shape = this.findShape(options._id);
-    if (shape != undefined) {
-      shape.move(options)
+    if (typeof shape == 'undefined') {
+      shape = this.addShape(options)
     }
+    shape.move(options)
   }
 	
 	this.fit_map_to_shapes = function() {

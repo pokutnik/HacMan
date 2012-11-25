@@ -57,10 +57,4 @@ Meteor.startup ->
           old_route = route
         )
       )
-    else
-      Meteor.autorun ->
-        u = Meteor.user()
-        if u and u.c_id
-          p = Player.findOne(u.c_id, {reactive: false})
-          world.addShape(p) if p and not world.findShape(u.c_id)
 
