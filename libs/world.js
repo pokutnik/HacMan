@@ -10,6 +10,7 @@ function World(mapobj) {
 	this.addShape = function(options) {
 		options['after_create_callback'] = this.fit_map_to_shapes;
 		options['world_ref'] = this;
+    options['map_ref'] = map_ref;
 		var shape = new Shape(options);
 		shapes[options['_id']] = shape;
     return shape;
