@@ -1,7 +1,10 @@
 Player = new Meteor.Collection('player')
-Route = new Meteor.Collection('route')
 
 Meteor.methods {
   set_route: (route) ->
-    console.log(route)
+    user = Meteor.user()
+    Player.update({_id: user.c_id}, {$set: {
+        timestamp: Date.now(),
+        route: route,
+        }})
   }

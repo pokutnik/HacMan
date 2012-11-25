@@ -6,9 +6,6 @@ Accounts.onCreateUser (options, user)->
     color: colors[Math.floor(Math.random()*colors.length)],
     kind: kinds[Math.floor(Math.random()*kinds.length)],
   })
-  r = Route.insert({
-    c_id: c,
-  })
   user.c_id = c
   user.score = 0
   return user
