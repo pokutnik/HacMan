@@ -1,5 +1,5 @@
 <template name="profile">
-  {{#if usrer}}
+  {{#if usrer.profile}}
     <form id="profileform">
         <fieldset>
             <legend>Profile</legend>
@@ -24,15 +24,15 @@
                 {{/each}}
             </select>
             <br>
-            <button class="btn" type="button">Save</button>
+            <button class="btn" type="submit">Save</button>
         </fieldset>
     </form>
   {{/if}}
   {{#unless user}}
-  <h1>Dear player</h1>
-  <h2>Please sign-in</h2>
-  <h1>or</h1>
-  <h2>Reginster new account</h2>
-
+  <h2>Dear player</h2>
+  <h3>Please sign-in</h3>
+  <h2>or</h2>
+  <h3>Reginster new account</h3>
+  <h4>Reload page if something doesnt work after(lots of magic)</h4>
   {{/unless}}
 </template>
