@@ -11,10 +11,22 @@ function Shape(options) {
 			color = options['color'],
 			placemark;
 
+  var _pic = function(direction){
+    return kind + '-' + direction + '-' + color + '.gif'
+  }
+
 	this.move = function(options, callback) {
 		if(!placemark) return;
     var x = options['x'],
-        y = options['y'];
+        y = options['y'],
+        old_x = placemark.geometry.getCoordinates()[0];
+    if (x - old_x > 0.00001){
+      console.log("left", x-old_x);
+      placemark.options.set('iconImageHref', _pic('left'));
+    } else {
+      placemark.options.set('iconImageHref', _pic('right'));
+      console.log("right", x-old_x);
+    }
     placemark.geometry.setCoordinates([x, y]);
 		if(callback) {
 			this.apply(callback);
@@ -30,7 +42,7 @@ function Shape(options) {
 
 	this.draw = function() {
 		if(typeof placemark == "undefined") {
-            var pic = kind + '-left-' + color + '.gif';
+            var pic = _pic('left');
 			console.log('adding placemark', pic);
             placemark = new ymaps.Placemark([x, y], {
                     balloonContent: username
