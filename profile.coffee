@@ -18,6 +18,7 @@ Meteor.methods {
         Player.update({_id: user.c_id}, {$set: {
             'color': data.color,
             'kind': data.kind,
+            'name': data.name,
             }})
     }
 
