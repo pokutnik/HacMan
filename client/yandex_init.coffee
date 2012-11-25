@@ -11,8 +11,8 @@ Meteor.startup ->
     world = new World(myMap)
     window.world = world
 
+    # add shapes to map
     shapes = Player.find({}, {reactive:false}).fetch()
-
     for shape in shapes
       if not shape.profile
         shape.profile = {}
@@ -25,7 +25,14 @@ Meteor.startup ->
       console.log(shape, options)
       s = world.addShape(options)
 
-    myMap.events.add('click', (e) ->
+    # select current shape
+    player_shape_id = Meteor.user().c_id
+    console.log(player_shape_id)
+    if (player_shape_id != undefined)
+      Session.set('player_shape_id', player_shape_id)
+      player_shape = world.findShape(player_shape_id)
+
+      myMap.events.add('click', (e) ->
       coords = e.get('coordPosition')
       y = coords[0].toPrecision(6)
       x = coords[1].toPrecision(6)
@@ -35,6 +42,3 @@ Meteor.startup ->
         _.each(shapes, (shape) ->
           console.log(shape)
           shape.move({x: x, y: x})
-        )
-      )
-    )
