@@ -18,3 +18,75 @@
     .flying;
     color: red;
 }
+
+.splash {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-repeat: no-repeat;
+    background-color: rgba(100, 100, 100, 0.5);
+    background-position: center;
+    z-index: 10000;
+}
+
+@-webkit-keyframes showhide {
+    from { opacity: 0; }
+    33% { opacity: 1; }
+    66% { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-webkit-keyframes showrotateup {
+    from { opacity: 0; }
+    50% { opacity: 1; }
+    to {
+        -webkit-transform: translateY(-100%);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes showrotatedown {
+    from { opacity: 0; }
+    50% { opacity: 1; }
+    to {
+        -webkit-transform: translateY(100%);
+        opacity: 1;
+    }
+}
+
+.splash1 {
+    .splash;
+    -webkit-animation: showhide 3s 0s;
+    background-image: url(/pacman-splash-normal.png);
+}
+.splash2 {
+    .splash;
+    opacity: 0;
+    -webkit-animation: showhide 3s 2s normal forwards;
+    background-image: url(/pacman-splash-black.png);
+}
+.splash31 {
+    .splash;
+    opacity: 0;
+    bottom: 50%;
+    background-color: transparent;
+    -webkit-animation: showrotateup 2s 4s;
+    -webkit-animation-timing-function: ease-in;
+    background-image: url(/pacman-splash-top.png);
+    background-position: center bottom;
+}
+.splash32 {
+    .splash;
+    opacity: 0;
+    top: 50%;
+    background-color: transparent;
+    -webkit-animation: showrotatedown 2s 4s;
+    -webkit-animation-timing-function: ease-in;
+    background-image: url(/pacman-splash-bottom.png);
+    background-position: center top;
+}
+.transparent {
+    opacity: 0;
+    -webkit-transition: opacity 1s;
+}
