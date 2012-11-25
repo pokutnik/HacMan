@@ -5,3 +5,6 @@
     width: 40px;
     background-color: yellow;
 }
+ymaps.ymaps-point-overlay {
+    -webkit-transition: left 0.3s linear, top 0.3s linear;
+}

@@ -37,6 +37,7 @@ function Shape(options) {
                 }, {
                     iconImageHref: pic,
                     iconImageSize: [25, 25],
+                    iconImageOffset: [-13, -13],
                     draggable: true
                 });
             map_ref.geoObjects.add(placemark);
