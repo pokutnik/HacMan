@@ -8,4 +8,16 @@
 
 h1 {
    font-family: 'Nosifer', cursive;
+   float: right;
+   color: black;
+}
+
+#myMap {
+    position: absolute;
+    left: 2px;
+    right: 8px;
+    top: 56px;
+    bottom: 8px;
+    margin: 0px;
+    padding: 0px;
 }
