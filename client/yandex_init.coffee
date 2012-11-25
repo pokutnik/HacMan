@@ -43,7 +43,7 @@ Meteor.startup ->
         console.log('go', go)
         ymaps.route(go).then( (route) ->
           points = route.getPaths()
-          route_pairs_list = []  ## list of route points
+          route_pairs_list = []
           points.each((p) ->
             p_coords = p.geometry.getCoordinates()
             for o in p_coords
