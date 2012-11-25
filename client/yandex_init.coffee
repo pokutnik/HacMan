@@ -34,6 +34,12 @@ Template.game.rendered = ->
     player_shape_id = user.c_id if user
     if (player_shape_id != undefined)
       Session.set('player_shape_id', player_shape_id)
+      shape = world.findShape(player_shape_id)
+      if not $(".splash32:visible")
+          offset = shape.get_pixel()
+          emit("Your player", "flying_you", offset.left, offset.top)
+      else
+          window.PLAYER_SHAPE = shape
       old_route = undefined
 
       myMap.events.add('click', (e) ->

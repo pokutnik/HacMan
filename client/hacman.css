@@ -5,10 +5,19 @@
     width: 40px;
     background-color: yellow;
 }
-ymaps.ymaps-point-overlay {
-    -webkit-transition: left 0.3s linear, top 0.3s linear;
-}
 
 h1 {
-   font-family: 'Nosifer', cursive; 
+   font-family: 'Nosifer', cursive;
+   float: right;
+   color: black;
+}
+
+#myMap {
+    position: absolute;
+    left: 2px;
+    right: 8px;
+    top: 56px;
+    bottom: 8px;
+    margin: 0px;
+    padding: 0px;
 }

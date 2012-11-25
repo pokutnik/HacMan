@@ -8,7 +8,7 @@ if (Meteor.isClient) {
          'page': 'profile'},
         ];
     if(Session.get('page') == null) {
-        Session.set('page', 'main');
+        Session.set('page', 'profile');
     }
     Template.navbar.events({
         'click a.pagechange': function() {
@@ -18,10 +18,4 @@ if (Meteor.isClient) {
     Template.navbar.isPage = Template.main.isPage = function(name) {
         return Session.equals('page', name);
     }
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
 }
