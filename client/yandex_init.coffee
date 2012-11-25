@@ -53,3 +53,9 @@ Meteor.startup ->
           myMap.geoObjects.add(route)
         )
       )
+    else
+      Meteor.autorun ->
+        u = Meteor.user()
+        p = Player.findOne(u.c_id, {reactive: false})
+        world.addShape(p) unless world.findShape(u.c_id)
+
