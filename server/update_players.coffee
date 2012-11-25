@@ -2,7 +2,7 @@ Meteor.startup ->
   Meteor.setInterval ->
     curtime = Date.now()
     SPEED = 0.000001  # degrees per millisecond
-    for player in Player.find({route: {$exists: true}}).fetch()
+    for player in Player.find({route: {$exists: true}}, {reactive: false}).fetch()
         past = curtime - player.timestamp
         s = player.route[0]
         f = player.route[1]
