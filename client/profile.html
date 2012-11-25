@@ -1,5 +1,6 @@
 <template name="profile">
-  {{#if usrer.profile}}
+  {{#if user.profile}}
+    {{#constant}}
     <form id="profileform">
         <fieldset>
             <legend>Profile</legend>
@@ -27,6 +28,7 @@
             <button class="btn" type="submit">Save</button>
         </fieldset>
     </form>
+    {{/constant}}
   {{/if}}
   {{#unless user}}
   <h2>Dear player</h2>
