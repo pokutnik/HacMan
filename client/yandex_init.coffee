@@ -37,14 +37,12 @@ Meteor.startup ->
         go = [[p.x, p.y],[y, x]]
         console.log('go', go)
         ymaps.route(go).then( (route) ->
-          points = route.getWayPoints()
-          console.log('route', route)
+          points = route.getPaths()
           route_pairs_list = []  ## list of route points
           points.each((p) ->
             p_coords = p.geometry.getCoordinates()
-            console.log(p_coords)
-            route_pairs_list.push(p_coords)
-            #player_shape.move({x: p_coords[0], y: p_coords[1]})
+            for o in p_coords
+              route_pairs_list.push(o)
           )
           console.log('route_list', route_pairs_list)
           Meteor.call('set_route', route_pairs_list)
