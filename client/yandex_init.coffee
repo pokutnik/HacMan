@@ -1,4 +1,4 @@
-Meteor.startup ->
+Template.game.rendered = ->
   ymaps.ready ->
     myMap = new ymaps.Map('myMap', {
       center: [50.442638,30.543365],

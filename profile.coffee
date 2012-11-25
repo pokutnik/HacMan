@@ -9,7 +9,7 @@ kinds = [
     'ghost',
     ]
 
-Meteor.methods
+Meteor.methods {
     setProfileData: (data) ->
         user = Meteor.user()
         Meteor.users.update({_id: user._id}, {$set: {
@@ -19,6 +19,7 @@ Meteor.methods
             'color': data.color,
             'kind': data.kind,
             }})
+    }
 
 if Meteor.isClient
 
@@ -42,7 +43,7 @@ if Meteor.isClient
         return player.kind == this.kind
 
     Template.profile.events({
-        "submit form": (ev) ->
+        "click button": (ev) ->
             ev.preventDefault()
             Meteor.call("setProfileData", {
                 'name': $("#pro_name").val(),
