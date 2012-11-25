@@ -24,6 +24,11 @@ Meteor.startup ->
         }, shape)
       s = world.addShape(options)
 
+    # listen Players autoupdate
+    Meteor.autorun ->
+      for p in Player.find().fetch()
+        world.update_shape(p)
+
     # select current shape
     player_shape_id = Meteor.user().c_id
     if (player_shape_id != undefined)
