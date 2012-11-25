@@ -33,18 +33,18 @@ Meteor.startup ->
       player_shape = world.findShape(player_shape_id)
 
       myMap.events.add('click', (e) ->
-      coords = e.get('coordPosition')
-      y = coords[0].toPrecision(6)
-      x = coords[1].toPrecision(6)
-      ymaps.route([[shapes[0]['x'], shapes[0]['y']],[y, x]]).then( (route) ->
-        points = route.getWayPoints()
-        points.each((p) ->
-          _.each(shapes, (shape) ->
-            p_coords = p.geometry.getCoordinates()
-            console.log(p_coords)
-            world.findShape(shape._id).move({x: p_coords[0], y: p_coords[1]})
+        coords = e.get('coordPosition')
+        y = coords[0].toPrecision(6)
+        x = coords[1].toPrecision(6)
+        ymaps.route([[shapes[0]['x'], shapes[0]['y']],[y, x]]).then( (route) ->
+          points = route.getWayPoints()
+          points.each((p) ->
+            _.each(shapes, (shape) ->
+              p_coords = p.geometry.getCoordinates()
+              console.log(p_coords)
+              world.findShape(shape._id).move({x: p_coords[0], y: p_coords[1]})
+            )
           )
+          #myMap.geoObjects.add(route)
         )
-        #myMap.geoObjects.add(route)
       )
-    )
