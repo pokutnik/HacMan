@@ -13,38 +13,12 @@ function Shape(options) {
 
 	this.move = function(options, callback) {
 		if(!placemark) return;
-		
-		if(x > options['x']) {
-			dx = -0.005;
-		} else { 
-			dx = 0.005;
-		}
-		
-		if(y > options['y']) {
-			dy = -0.005;
-		} else { 
-			dy = 0.005;
-		}
-		
-		var timer = setInterval(function() {
-			x += dx;
-			y += dy;
-			if((Math.abs(x - options['x']) < 0.01) && (Math.abs(y - options['y']) < 0.01)) {
-				clearInterval(timer);
-				timer = null;
-			} else {
-				placemark.geometry.setCoordinates([x, y]);
-			}
-		}, 70);
-		
+    var x = options['x'],
+        y = options['y'];
+    placemark.geometry.setCoordinates([x, y]);
 		if(callback) {
-			//var x = options['x'],
-		  //  y = options['y'];
 			this.apply(callback);
 		}
-		//if(placemark && this.can_move(options)) {
-		//  placemark.geometry.setCoordinates([x, y]);
-		//}
 	}
 
 	this.can_move = function(options) {
