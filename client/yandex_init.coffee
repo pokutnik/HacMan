@@ -30,9 +30,11 @@ Meteor.startup ->
         world.update_shape(p)
 
     # select current shape
-    player_shape_id = Meteor.user().c_id
+    user = Meteor.user()
+    player_shape_id = user.c_id if user
     if (player_shape_id != undefined)
       Session.set('player_shape_id', player_shape_id)
+      old_route = undefined
 
       myMap.events.add('click', (e) ->
         p = Player.findOne(player_shape_id)
@@ -50,13 +52,15 @@ Meteor.startup ->
               route_pairs_list.push(o)
           )
           Meteor.call('set_route', route_pairs_list)
+          myMap.geoObjects.remove(old_route) if old_route
           myMap.geoObjects.add(route)
+          old_route = route
         )
       )
     else
       Meteor.autorun ->
         u = Meteor.user()
-        if u.c_id
+        if u and u.c_id
           p = Player.findOne(u.c_id, {reactive: false})
-          world.addShape(p) unless world.findShape(u.c_id)
+          world.addShape(p) if p and not world.findShape(u.c_id)
 
