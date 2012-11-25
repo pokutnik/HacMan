@@ -57,4 +57,6 @@ Template.game.rendered = ->
           old_route = route
         )
       )
-
+      
+    #actualProvider = new ymaps.traffic.provider.Actual({}, {infoLayerShown: true})
+    #actualProvider.setMap(myMap)
