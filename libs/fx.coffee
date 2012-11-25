@@ -10,5 +10,4 @@ emit = (text, cls, x, y) ->
         left: x + 'px'
         top: y + 'px'
         )
-    console.log(el)
     setTimeout((-> el.addClass('after')), 100)

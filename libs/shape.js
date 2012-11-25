@@ -78,6 +78,9 @@ function Shape(options) {
   this.get_coordinates = function() {
 	  return [x, y];
   }
+  this.get_pixel = function() {
+    return element.offset();
+  }
 
 	this.get_random_street = function() {
 		var shape = this;
