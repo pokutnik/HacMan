@@ -63,7 +63,8 @@ function World(mapobj) {
 	  }
 		var bounds = [[min_y, min_x], [max_y, max_x]];
 	
-		var center_and_zoom = ymaps.util.bounds.getCenterAndZoom(bounds, [MAP_WIDTH, MAP_HEIGHT]);
+		var map_el = jQuery('#myMap');
+		var center_and_zoom = ymaps.util.bounds.getCenterAndZoom(bounds, [map_el.width(), map_el.height()]);
 
 		map_ref.setCenter(center_and_zoom.center, center_and_zoom.zoom);
 	}
