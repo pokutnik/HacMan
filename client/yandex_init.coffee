@@ -7,12 +7,12 @@ Meteor.startup ->
     })
 
     myMap.controls.add(new ymaps.control.ZoomControl())
-    
+
     world = new World(myMap)
     window.world = world
 
     shapes = Player.find({}, {reactive:false}).fetch()
-    
+
     for shape in shapes
       options = _.extend({type: 'pacman', map_ref: myMap}, shape)
       console.log(shape, options)
@@ -30,5 +30,4 @@ Meteor.startup ->
           shape.move({x: x, y: x})
         )
       )
-
     )
