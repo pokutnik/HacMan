@@ -56,6 +56,7 @@ Meteor.startup ->
     else
       Meteor.autorun ->
         u = Meteor.user()
-        p = Player.findOne(u.c_id, {reactive: false})
-        world.addShape(p) unless world.findShape(u.c_id)
+        if u.c_id
+          p = Player.findOne(u.c_id, {reactive: false})
+          world.addShape(p) unless world.findShape(u.c_id)
 

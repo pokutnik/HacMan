@@ -2,8 +2,8 @@ function Shape(options) {
 	ORIGIN_X = 50.442638;
 	ORIGIN_Y = 30.543365;
 
-	var x, // // instead of latitude and longitude
-			y,
+	var x = options.x || ORIGIN_X, // // instead of latitude and longitude
+			y = options.u || ORIGIN_Y,
 			world_ref = options['world_ref'],
 			map_ref = options['map_ref'],
 			username = options['name'],
@@ -19,13 +19,14 @@ function Shape(options) {
 		if(!placemark) return;
     var x = options['x'],
         y = options['y'],
-        old_x = placemark.geometry.getCoordinates()[0];
-    if (x - old_x > 0.00001){
-      console.log("left", x-old_x);
-      placemark.options.set('iconImageHref', _pic('left'));
-    } else {
+        old = placemark.geometry.getCoordinates()[1],
+        diff = y - old;
+    if (diff > 0.0000001){
       placemark.options.set('iconImageHref', _pic('right'));
-      console.log("right", x-old_x);
+    } else {
+      if (diff < -0.0000001) {
+        placemark.options.set('iconImageHref', _pic('left'));
+      }
     }
     placemark.geometry.setCoordinates([x, y]);
 		if(callback) {
@@ -42,19 +43,20 @@ function Shape(options) {
 
 	this.draw = function() {
 		if(typeof placemark == "undefined") {
-            var pic = _pic('left');
+      var pic = _pic('left');
 			console.log('adding placemark', pic);
-            placemark = new ymaps.Placemark([x, y], {
-                    balloonContent: username
-                }, {
-                    iconImageHref: pic,
-                    iconImageSize: [25, 25],
-                    iconImageOffset: [-13, -13],
-                    draggable: true
-                });
-            map_ref.geoObjects.add(placemark);
+      placemark = new ymaps.Placemark([x, y], {
+              balloonContent: username
+          }, {
+              iconImageHref: pic,
+              iconImageSize: [25, 25],
+              iconImageOffset: [-13, -13],
+              draggable: true
+          });
+      map_ref.geoObjects.add(placemark);
 		}
 	}
+  this.draw();
 
 	this.get_random_coordinates = function() {
 		var random_x = ORIGIN_X - 0.02 + (Math.random() / 50.0),
@@ -85,5 +87,5 @@ function Shape(options) {
 		});
 	}
 
-	this.get_random_street();
+	//this.get_random_street();
 }

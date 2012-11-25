@@ -41,4 +41,4 @@ Meteor.startup ->
                 }})
         console.log("PLAYER", player.color, past, past_dist, s, f, x, y)
     return
-  , 300
+  , 100
