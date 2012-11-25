@@ -49,7 +49,7 @@ Template.game.rendered = ->
         x = coords[1].toPrecision(6)
         go = [[p.x, p.y],[y, x]]
         console.log('go', go)
-        ymaps.route(go, {avoidTrafficJams: true}).then( (route) ->
+        ymaps.route(go, {avoidTrafficJams: false}).then( (route) ->
           points = route.getPaths()
           route_pairs_list = []
           points.each((p) ->
