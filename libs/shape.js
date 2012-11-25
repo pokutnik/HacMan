@@ -53,7 +53,7 @@ function Shape(options) {
               iconImageHref: pic,
               iconImageSize: [25, 25],
               iconImageOffset: [-13, -13],
-              draggable: true
+              draggable: false
           });
           map_ref.geoObjects.add(placemark);
           $('ymaps.ymaps-point-overlay ymaps.ymaps-image-with-content ymaps ymaps').each(function() {
