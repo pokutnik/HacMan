@@ -35,15 +35,15 @@ if Meteor.isClient
     Template.profile.myColor = ->
         user = Meteor.user()
         player = Player.findOne({_id: user.c_id}, {reactive:false})
-        return player.color == this.color
+        return player.color == this.color if player
 
     Template.profile.myKind = ->
         user = Meteor.user()
         player = Player.findOne({_id: user.c_id}, {reactive:false})
-        return player.kind == this.kind
+        return player.kind == this.kind if player
 
     Template.profile.events({
-        "click button": (ev) ->
+        "submit form": (ev) ->
             ev.preventDefault()
             Meteor.call("setProfileData", {
                 'name': $("#pro_name").val(),
