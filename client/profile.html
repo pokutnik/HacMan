@@ -1,7 +1,7 @@
 <template name="profile">
   {{#if user.profile}}
-    {{#constant}}
     <form id="profileform">
+    {{#constant}}
         <fieldset>
             <legend>Profile</legend>
             <label for="pro_name">Display name</label>
@@ -27,8 +27,8 @@
             <br>
             <button class="btn" type="submit">Save</button>
         </fieldset>
-    </form>
     {{/constant}}
+    </form>
   {{/if}}
   {{#unless user}}
   <h2>Dear player</h2>

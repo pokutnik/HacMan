@@ -3,7 +3,7 @@ Meteor.startup(->
         $(this).hide()
         )
     $('.splash32').bind('webkitAnimationEnd', ->
-        if PLAYER_SHAPE
+        if window.PLAYER_SHAPE
             offset = PLAYER_SHAPE.get_pixel()
             emit("Your player", "flying_you", offset.left, offset.top)
         )
