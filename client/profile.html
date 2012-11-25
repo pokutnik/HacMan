@@ -1,4 +1,6 @@
 <template name="profile">
+  {{#if user.profile}}
+    {{#constant}}
     <form id="profileform">
         <fieldset>
             <legend>Profile</legend>
@@ -23,7 +25,16 @@
                 {{/each}}
             </select>
             <br>
-            <button class="btn" type="button">Save</button>
+            <button class="btn" type="submit">Save</button>
         </fieldset>
     </form>
+    {{/constant}}
+  {{/if}}
+  {{#unless user}}
+  <h2>Dear player</h2>
+  <h3>Please sign-in</h3>
+  <h2>or</h2>
+  <h3>Reginster new account</h3>
+  <h4>Reload page if something doesnt work after(lots of magic)</h4>
+  {{/unless}}
 </template>

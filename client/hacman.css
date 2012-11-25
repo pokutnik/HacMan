@@ -6,10 +6,12 @@
     background-color: yellow;
 }
 
-h1 {
+h1,h2,h4,h5 {
    font-family: 'Nosifer', cursive;
-   float: right;
    color: black;
+}
+h1 {
+   float: right;
 }
 
 #myMap {
