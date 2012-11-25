@@ -1,7 +1,5 @@
 Meteor.startup ->
   Meteor.setInterval ->
-    angle = age() / 1000
-    console.log("CALCULATING")
     curtime = Date.now()
     SPEED = 0.000001  # degrees per millisecond
     for player in Player.find({route: {$exists: true}}).fetch()
