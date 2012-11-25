@@ -14,7 +14,14 @@ Meteor.startup ->
     shapes = Player.find({}, {reactive:false}).fetch()
     
     for shape in shapes
-      options = _.extend({type: 'pacman', map_ref: myMap}, shape)
+      if not shape.profile
+        shape.profile = {}
+      options = _.extend({
+        name: shape.profile.name || 'guest',
+        kind: shape.profile.kind || 'pacman',
+        color: shape.profile.color || 'blue',
+        map_ref: myMap,
+        }, shape)
       console.log(shape, options)
       s = world.addShape(options)
 

@@ -1,14 +1,16 @@
 function Shape(options) {
 	ORIGIN_X = 50.442638;
 	ORIGIN_Y = 30.543365;
-	
+
 	var x, // // instead of latitude and longitude
 			y,
 			world_ref = options['world_ref'],
 			map_ref = options['map_ref'],
-			type = options['type'],
+			username = options['name'],
+			kind = options['kind'],
+			color = options['color'],
 			placemark;
-			
+
 	this.move = function(options) {
 		var x = options['x'],
 		    y = options['y'];
@@ -26,18 +28,19 @@ function Shape(options) {
 
 	this.draw = function() {
 		if(typeof placemark == "undefined") {
-			console.log('adding placemark');
-		  placemark = new ymaps.Placemark([x, y], {
-			  balloonContent: type
-			}, {
-			  iconImageHref: (type == 'pacman' ? 'pacman.png' : 'ghost.gif'), // картинка иконки
-			  iconImageSize: [25, 25],
-			  draggable: true
-			});
-		  map_ref.geoObjects.add(placemark);
+            var pic = kind + '-left-' + color + '.gif';
+			console.log('adding placemark', pic);
+            placemark = new ymaps.Placemark([x, y], {
+                    balloonContent: username
+                }, {
+                    iconImageHref: pic,
+                    iconImageSize: [25, 25],
+                    draggable: true
+                });
+            map_ref.geoObjects.add(placemark);
 		}
 	}
-			
+
 	this.get_random_coordinates = function() {
 		var random_x = ORIGIN_X - 0.02 + (Math.random() / 50.0),
 			random_y = ORIGIN_Y - 0.02 + (Math.random() / 50.0);
@@ -66,6 +69,6 @@ function Shape(options) {
 			return;
 		});
 	}
-	
+
 	this.get_random_street();
 }

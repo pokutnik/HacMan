@@ -1,9 +1,27 @@
 <template name="profile">
-    <form>
+    <form id="profileform">
         <fieldset>
             <legend>Profile</legend>
             <label for="pro_name">Display name</label>
             <input name="name" value="{{ user.profile.name }}" id="pro_name">
+            <label for="pro_kind">Kind</label>
+            <select name="kind" id="pro_kind">
+                {{#each kinds }}
+                    <option value="{{ kind }}"
+                        {{#if myKind }}selected="selected"{{/if}}>
+                    {{ kind }}
+                    </option>
+                {{/each}}
+            </select>
+            <label for="pro_color">Color</label>
+            <select name="color" id="pro_color">
+                {{#each colors }}
+                    <option value="{{ color }}" style="background: {{ color }}"
+                        {{#if myColor }}selected="selected"{{/if}}>
+                    {{ color }}
+                    </option>
+                {{/each}}
+            </select>
             <br>
             <button class="btn" type="button">Save</button>
         </fieldset>
