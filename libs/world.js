@@ -13,6 +13,7 @@ function World(mapobj) {
     options['map_ref'] = map_ref;
 		var shape = new Shape(options);
 		shapes[options['_id']] = shape;
+		this.fit_map_to_shapes();
     return shape;
 	}
 
@@ -35,7 +36,12 @@ function World(mapobj) {
 			}
 	  });
 	
-		if(shape_coords.length < 2) return;
+		if(shape_coords.length < 1) return;
+		
+		if(shape_coords.length == 1) {
+			map_ref.setCenter(shape_coords[0], 13);
+			return;
+		}
 		
 		var max_y = shape_coords[0][0], 
 				min_y = shape_coords[0][0],

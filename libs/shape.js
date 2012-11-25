@@ -9,6 +9,7 @@ function Shape(options) {
 			username = options['name'],
 			kind = options['kind'],
 			color = options['color'],
+            element,
 			placemark;
 
   var _pic = function(direction){
@@ -46,15 +47,25 @@ function Shape(options) {
       var pic = _pic('left');
 			console.log('adding placemark', pic);
       placemark = new ymaps.Placemark([x, y], {
-              balloonContent: username
+              balloonContent: username,
+              iconContent: 'current_placeholder',
           }, {
               iconImageHref: pic,
               iconImageSize: [25, 25],
               iconImageOffset: [-13, -13],
               draggable: true
           });
-      map_ref.geoObjects.add(placemark);
-		}
+          map_ref.geoObjects.add(placemark);
+          $('ymaps.ymaps-point-overlay ymaps.ymaps-image-with-content ymaps ymaps').each(function() {
+            var el = $(this);
+            if(el.text() == 'current_placeholder') {
+                el.text('');
+                element = el.parent().parent().parent();
+            }
+          });
+          element.css('webkitTransition', "left 0.3s linear, top 0.3s linear");
+      }
+
 	}
   this.draw();
 
