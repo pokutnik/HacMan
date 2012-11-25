@@ -1,4 +1,5 @@
 <template name="profile">
+  {{#if usrer}}
     <form id="profileform">
         <fieldset>
             <legend>Profile</legend>
@@ -26,4 +27,12 @@
             <button class="btn" type="button">Save</button>
         </fieldset>
     </form>
+  {{/if}}
+  {{#unless user}}
+  <h1>Dear player</h1>
+  <h2>Please sign-in</h2>
+  <h1>or</h1>
+  <h2>Reginster new account</h2>
+
+  {{/unless}}
 </template>
