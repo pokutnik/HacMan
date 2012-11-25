@@ -39,14 +39,14 @@ Meteor.startup ->
         ymaps.route([[shapes[0]['x'], shapes[0]['y']],[y, x]]).then( (route) ->
           points = route.getWayPoints()
           route_pairs_list = []  ## list of route points
-          Meteor.call('set_route', route_pairs_list)
           points.each((p) ->
-            _.each(shapes, (shape) ->
-              p_coords = p.geometry.getCoordinates()
-              console.log(p_coords)
-              world.findShape(shape._id).move({x: p_coords[0], y: p_coords[1]})
-            )
+            p_coords = p.geometry.getCoordinates()
+            console.log(p_coords)
+            route_pairs_list.push(p_coords)
+            player_shape.move({x: p_coords[0], y: p_coords[1]})
           )
+          console.log('route_list', route_pairs_list)
+          Meteor.call('set_route', route_pairs_list)
           #myMap.geoObjects.add(route)
         )
       )
