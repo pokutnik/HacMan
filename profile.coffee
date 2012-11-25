@@ -42,7 +42,8 @@ if Meteor.isClient
         return player.kind == this.kind
 
     Template.profile.events({
-        "click button": ->
+        "submit form": (ev) ->
+            ev.preventDefault()
             Meteor.call("setProfileData", {
                 'name': $("#pro_name").val(),
                 'kind': $("#pro_kind").val(),
