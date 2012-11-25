@@ -28,9 +28,9 @@ Meteor.startup ->
     player_shape_id = Meteor.user().c_id
     if (player_shape_id != undefined)
       Session.set('player_shape_id', player_shape_id)
-      p = Player.findOne(player_shape_id)
 
       myMap.events.add('click', (e) ->
+        p = Player.findOne(player_shape_id)
         coords = e.get('coordPosition')
         y = coords[0].toPrecision(6)
         x = coords[1].toPrecision(6)
@@ -44,7 +44,6 @@ Meteor.startup ->
             for o in p_coords
               route_pairs_list.push(o)
           )
-          console.log('route_list', route_pairs_list)
           Meteor.call('set_route', route_pairs_list)
           myMap.geoObjects.add(route)
         )
