@@ -1,11 +1,10 @@
 Player = new Meteor.Collection('player')
+Route = new Meteor.Collection('route')
 
 Meteor.methods {
-  move_circle: (x,y) ->
+  set_route: (route) ->
     user = Meteor.user()
-    o = Player.update(user.c_id, {$set: {
-        x: x,
-        y: y,
-      }
-    })
+    Route.update({c_id: user.c_id}, {$set: {route: route}})
+
+
   }
