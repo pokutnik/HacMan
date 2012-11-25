@@ -2,8 +2,9 @@ Accounts.onCreateUser (options, user)->
   c = Player.insert({
     x: 50.442638,
     y: 30.543365,
-    type: 'pacman',
     status: 'alive',
+    color: colors[Math.floor(Math.random()*colors.length)],
+    kind: kinds[Math.floor(Math.random()*kinds.length)],
   })
   user.c_id = c
   user.score = 0
