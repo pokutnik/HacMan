@@ -1,10 +1,10 @@
 ORIGIN_X = 50.442638
 ORIGIN_Y = 30.543365
-	
+
 get_random_coordinates = ->
-	random_x = ORIGIN_X - 0.02 + (Math.random() / 50.0)
-	random_y = ORIGIN_Y - 0.02 + (Math.random() / 50.0)
-	random_y + "," + random_x
+  random_x = ORIGIN_X + (Math.random() / 500.0)
+  random_y = ORIGIN_Y + (Math.random() / 500.0)
+  return [random_x, random_y]
 
 get_random_street = ->
 	shape = this
@@ -20,9 +20,9 @@ get_random_street = ->
 			console.log(e)
 			get_random_street()
 	)
-	
+
 Accounts.onCreateUser (options, user)->
-  coords = get_random_street
+  coords = get_random_coordinates()
   c = Player.insert({
     x: coords[0],
     y: coords[1],
