@@ -7,7 +7,7 @@ Team
 ----
 
 * [Paul Colomiets](http://github.com/tailhook/)
-* [Dmitrii Samoilov](htto://github.com/german/)
+* [Dmitrii Samoilov](http://github.com/german/)
 * [Alexandr Pokutnik](http://github.com/pokutnik/)
 * [Vitaliy Yanchuk](http://github.com/fuksito/)
 * Elena Orap
