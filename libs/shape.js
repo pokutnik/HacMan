@@ -16,6 +16,11 @@ function Shape(options) {
     return kind + '-' + direction + '-' + color + '.gif'
   }
 
+	this.respawn = function() {
+		// jQuery('.ymaps-image-with-content')
+    jQuery(element).hide('explode', {pieces: 16}, 2000);
+	}
+	
 	this.move = function(options, callback) {
 		if(!placemark) return;
     var x = options['x'],
