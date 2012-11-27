@@ -6,31 +6,24 @@ get_random_coordinates = ->
   random_y = ORIGIN_Y + (Math.random() / 500.0)
   return [random_x, random_y]
 
-get_random_street = ->
+get_random_street = (user)->
   Meteor.http.get('http://geocode-maps.yandex.ru/1.x/?geocode=' + get_random_coordinates() +   '&kind=street&spn=0.00005,0.00005&rspn=1&results=1&format=json', {}, (err, response) ->
+    content = Function("return " + response.content)() # poor-man's json parser
     try
-      debugger
-      pos = response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["Point"]["pos"]
+      pos = content["response"]["GeoObjectCollection"]["metaDataProperty"]["GeocoderResponseMetaData"]["Point"]["pos"]
       point = pos.split(' ')
-      console.log(point)
-      c = Player.insert({
-        x: parseFloat(point[1]),
-        y: parseFloat(point[0]),
-        status: 'alive',
-        color: colors[Math.floor(Math.random()*colors.length)],
-        kind: kinds[Math.floor(Math.random()*kinds.length)],
-      })
+      c = Player.insert({x: parseFloat(point[0]), y: parseFloat(point[1]), status: 'alive', color: colors[Math.floor(Math.random()*colors.length)], kind: kinds[Math.floor(Math.random()*kinds.length)]})
       user.c_id = c
       user.score = 0
       return user
     catch e
       console.log('error in get_random_street')
       console.log(e)
-      get_random_street()
+      get_random_street(user)
   )
 
 Accounts.onCreateUser (options, user)->
-  get_random_street
+  get_random_street(user)
 
 NewCollection = new Meteor.Collection('new_collection')
 
