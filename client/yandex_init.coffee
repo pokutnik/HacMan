@@ -13,6 +13,7 @@ Template.game.rendered = ->
 
     # add shapes to map
     shapes = Player.find({}, {reactive:false}).fetch()
+
     for shape in shapes
       if not shape.profile
         shape.profile = {}
@@ -36,33 +37,33 @@ Template.game.rendered = ->
       Session.set('player_shape_id', player_shape_id)
       shape = world.findShape(player_shape_id)
       if not $(".splash32:visible")
-          offset = shape.get_pixel()
-          emit("Your player", "flying_you", offset.left, offset.top)
+        offset = shape.get_pixel()
+        emit("Your player", "flying_you", offset.left, offset.top)
       else
-          window.PLAYER_SHAPE = shape
+        window.PLAYER_SHAPE = shape
       old_route = undefined
 
-      myMap.events.add('click', (e) ->
-        p = Player.findOne(player_shape_id)
-        coords = e.get('coordPosition')
-        y = coords[0].toPrecision(6)
-        x = coords[1].toPrecision(6)
-        go = [[p.x, p.y],[y, x]]
-        console.log('go', go)
-        ymaps.route(go, {avoidTrafficJams: false}).then( (route) ->
-          points = route.getPaths()
-          route_pairs_list = []
-          points.each((p) ->
-            p_coords = p.geometry.getCoordinates()
-            for o in p_coords
-              route_pairs_list.push(o)
-          )
-          Meteor.call('set_route', route_pairs_list)
-          myMap.geoObjects.remove(old_route) if old_route
-          myMap.geoObjects.add(route)
-          old_route = route
+    myMap.events.add('click', (e) ->
+      p = Player.findOne(player_shape_id)
+      coords = e.get('coordPosition')
+      y = coords[0].toPrecision(6)
+      x = coords[1].toPrecision(6)
+      go = [[p.x, p.y],[y, x]]
+      console.log('go', go)
+      ymaps.route(go, {avoidTrafficJams: false}).then( (route) ->
+        points = route.getPaths()
+        route_pairs_list = []
+        points.each((p) ->
+          p_coords = p.geometry.getCoordinates()
+          for o in p_coords
+            route_pairs_list.push(o)
         )
+        Meteor.call('set_route', route_pairs_list)
+        myMap.geoObjects.remove(old_route) if old_route
+        myMap.geoObjects.add(route)
+        old_route = route
       )
+    )
       
     #actualProvider = new ymaps.traffic.provider.Actual({}, {infoLayerShown: true})
     #actualProvider.setMap(myMap)

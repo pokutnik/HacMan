@@ -65,7 +65,7 @@ function World(mapobj) {
 	
 		var map_el = jQuery('#myMap');
 		var center_and_zoom = ymaps.util.bounds.getCenterAndZoom(bounds, [map_el.width(), map_el.height()]);
-
-		map_ref.setCenter(center_and_zoom.center, center_and_zoom.zoom);
+    var zoom = (center_and_zoom.zoom > 17 ? 17 : center_and_zoom.zoom);
+		map_ref.setCenter(center_and_zoom.center, zoom);
 	}
 }
