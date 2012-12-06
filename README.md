@@ -3,6 +3,8 @@ HacMan
 
 HacMan is Pacman web multiplayer clone on Yandex Maps
 
+[Demo](http://54.246.104.222:3000/)
+
 Team
 ----
 
